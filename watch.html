@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FixNotice Watch: Buffalo code violation alerts for landlords</title>
+<meta name="description" content="Get an email the morning the City of Buffalo files a code violation, inspection order or registration fee on your property, and before your rental registration lapses. Free property check, free first week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f7f9;--card:#ffffff;--ink:#0f172a;--muted:#5b6578;--line:#e3e7ee;
+    --navy:#0b1f3a;--navy2:#132d55;--accent:#2563eb;--accent-ink:#fff;--amber:#f59e0b;--green:#16a34a;
+    --chip:#eef2ff;--chip-ink:#3730a3;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}}
+  :root[data-theme="dark"]{--bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+  /* header + hero on navy */
+  .top{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,#1d4ed8 140%);color:#fff;position:relative;overflow:hidden}
+  .top:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 85% 10%,rgba(255,255,255,.10),transparent 60%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px)}
+  .top > .wrap{position:relative}
+  header{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.25)}
+  nav a{color:rgba(255,255,255,.8);text-decoration:none;margin-left:20px;font-weight:500}
+  nav a:hover{color:#fff}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px 0 56px}
+  .kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fcd34d;margin-bottom:14px}
+  h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;margin:0 0 16px;letter-spacing:-.025em;font-weight:800}
+  .lead{font-size:18px;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 26px}
+  .cta{display:inline-block;background:var(--amber);color:#1a1200;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(245,158,11,.35)}
+  .cta:hover{filter:brightness(1.05)}
+  .cta.alt{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);box-shadow:none;margin-left:10px}
+  .trust{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:22px;font-size:14px;color:rgba(255,255,255,.75)}
+  .trust span:before{content:"✓";color:#86efac;font-weight:800;margin-right:6px}
+
+  /* inbox mock */
+  .mock{background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;transform:rotate(-1.5deg)}
+  .mock .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--card) 92%,var(--line));font-size:12px;color:var(--muted)}
+  .mock .bar b{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e5e7eb}
+  .mock .bar b:nth-child(1){background:#fda4af}.mock .bar b:nth-child(2){background:#fde68a}.mock .bar b:nth-child(3){background:#86efac}
+  .mock .mail{padding:14px 16px 8px}
+  .mock .from{font-size:13px;color:var(--muted)}
+  .mock .subj{font-weight:700;margin:2px 0 10px}
+  .lead-row{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:8px 0;font-size:13px}
+  .lead-row .n{width:28px;height:28px;border-radius:8px;background:var(--chip);color:var(--chip-ink);display:grid;place-items:center;font-weight:700}
+  .lead-row .a{font-weight:600}
+  .lead-row .w{color:var(--muted)}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin:4px 4px 0 0;font-weight:600}
+  .tag.hot{background:#fff7ed;color:#c2410c}
+  .mock .foot{padding:8px 16px 14px;font-size:12px;color:var(--muted)}
+
+  /* stats strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:-28px 0 0;position:relative}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+  .stat b{display:block;font-size:28px;letter-spacing:-.02em;font-weight:800}
+  .stat span{color:var(--muted);font-size:13px}
+
+  section{padding:48px 0 0}
+  h2{font-size:30px;margin:0 0 8px;letter-spacing:-.02em;font-weight:800}
+  .sub{color:var(--muted);margin:0 0 22px;font-size:17px;max-width:680px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .step .num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+  .step h3{margin:0 0 6px;font-size:17px}
+  .step p{margin:0;color:var(--muted);font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:500}
+
+  .sample{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .sample table{width:100%;border-collapse:collapse;font-size:14px}
+  .sample th,.sample td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  .sample th{color:var(--muted);font-weight:600;font-size:13px;background:color-mix(in srgb,var(--card) 90%,var(--line))}
+  .sample tr:last-child td{border-bottom:0}
+  .sample .note{font-size:13px;color:var(--muted);padding:12px 14px;border-top:1px solid var(--line)}
+
+  .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative}
+  .plan.best{border-color:var(--accent);box-shadow:0 20px 50px rgba(37,99,235,.15)}
+  .badge{position:absolute;top:-12px;left:22px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .plan .name{font-weight:600;color:var(--muted)}
+  .price{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:6px 0 0}
+  .price small{font-size:15px;color:var(--muted);font-weight:500}
+  .plan .free{color:var(--green);font-weight:600;font-size:14px;margin-bottom:12px}
+  .plan ul{padding-left:0;list-style:none;margin:12px 0 18px;color:var(--ink)}
+  .plan li{margin:7px 0;padding-left:24px;position:relative;font-size:15px}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .paybox{min-height:48px}
+  .fallback{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .fallback a{color:var(--accent)}
+  .ok{display:none;background:color-mix(in srgb,var(--accent) 12%,var(--card));border:1px solid var(--accent);border-radius:12px;padding:16px;margin-top:16px}
+
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:8px 0}
+  .faq summary{cursor:pointer;font-weight:600}
+  .faq p{color:var(--muted);margin:10px 0 0}
+
+  .final{margin-top:56px;background:linear-gradient(160deg,var(--navy),#1d4ed8);color:#fff;border-radius:20px;padding:36px;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.8);margin:0 auto 20px;max-width:560px}
+  footer{margin:40px 0 28px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
+  footer a{color:var(--accent)}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-bottom:40px}
+    .mock{transform:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .steps,.plans{grid-template-columns:1fr}
+    nav{display:none}
+    .cta.alt{margin-left:0;margin-top:10px}
+  }
+</style>
+<style>
+  .lookup{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 20px 50px rgba(15,23,42,.10)}
+  .lookup form{display:flex;gap:10px;flex-wrap:wrap}
+  .lookup input{flex:1;min-width:220px;font:inherit;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+  .lookup button{font:inherit;font-weight:700;padding:13px 20px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+  .lookup .hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .result{margin-top:18px}
+  .result h3{margin:0 0 6px;font-size:18px}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-right:6px}
+  .pill.ok{background:#dcfce7;color:#166534}.pill.warn{background:#fef3c7;color:#92400e}.pill.bad{background:#fee2e2;color:#991b1b}.pill.gray{background:var(--chip);color:var(--chip-ink)}
+  .vlist{list-style:none;padding:0;margin:10px 0 0}
+  .vlist li{padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+  .vlist li b{font-weight:600}
+  .vlist li .m{color:var(--muted)}
+  .plans.three{grid-template-columns:repeat(3,1fr)}
+  .quiet{color:var(--muted);font-size:14px}
+  @media (max-width:860px){.plans.three{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap">
+    <header>
+      <div class="logo"><i></i>FixNotice <span style="font-weight:500;opacity:.8">Watch</span></div>
+      <nav><a href="#check">Check a property</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="index.html">For contractors</a></nav>
+    </header>
+    <div class="hero">
+      <div>
+        <span class="kicker">For Buffalo landlords &amp; property managers</span>
+        <h1>Know the morning the city files anything on your property.</h1>
+        <p class="lead">Code notices, inspection orders, registration fees: the City of Buffalo files them daily and mails the owner weeks later, often to the wrong address. FixNotice Watch reads the city's public records every morning and emails you the moment one of your addresses is cited, and before a rental registration lapses.</p>
+        <a class="cta" href="#check">Check a property free</a>
+        <a class="cta alt" href="#pricing">Start a free week</a>
+        <div class="trust"><span>Public city records</span><span>No login, no app</span><span>Cancel any time</span></div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="bar"><b></b><b></b><b></b>&nbsp;Inbox · 7:02 AM</div>
+        <div class="mail">
+          <div class="from">FixNotice Watch &lt;matt.fixnotice@yahoo.com&gt;</div>
+          <div class="subj">FixNotice Watch: 2 new city notices on your properties</div>
+          <div class="lead-row"><div class="n">1</div><div><div class="a">ALABAMA ST · 2-family</div><div class="w">Fees (Rental Reg): $400 in rental registration fees are due</div><span class="tag hot">paperwork</span><span class="tag">registration expired Mar 3</span></div></div>
+          <div class="lead-row"><div class="n">2</div><div><div class="a">FLORIDA ST · 2-family</div><div class="w">Rodent harborage: seal openings in foundation, remove debris</div><span class="tag">repair</span><span class="tag">case GEN26-9584366</span></div></div>
+        </div>
+        <div class="foot">Filed yesterday by city inspectors. Reply with an address to add or remove it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>626</b><span>Buffalo properties cited last month</span></div>
+    <div class="stat"><b>77%</b><span>owned by someone who lives elsewhere</span></div>
+    <div class="stat"><b>8,162</b><span>rental registrations already lapsed</span></div>
+    <div class="stat"><b>$300</b><span>typical fee on a missed registration notice</span></div>
+  </div>
+
+  <section id="check">
+    <h2>Check a Buffalo property</h2>
+    <p class="sub">Type an address. We'll show what the city has on file right now: open notices and rental-registration status. Free, no sign-up.</p>
+    <div class="lookup">
+      <form id="f" onsubmit="return lookup(event)">
+        <input id="addr" placeholder="e.g. 130 Alabama St" autocomplete="street-address" required>
+        <button type="submit">Check</button>
+      </form>
+      <p class="hint">Number and street name is enough. Buffalo city limits only.</p>
+      <div class="result" id="out"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="sub">You give us addresses once. We read the city every morning.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Send your addresses</h3><p>Reply to the welcome email with the properties you own or manage, one per line. Add or remove any time by replying.</p></div>
+      <div class="step"><div class="num">2</div><h3>We watch the city's records</h3><p>Every morning: new code violations, inspection orders and fee notices filed on your addresses, plus the rental registry's expiration dates.</p></div>
+      <div class="step"><div class="num">3</div><h3>You hear first</h3><p>An email the morning after anything is filed, 60 days before a registration lapses, and a short Monday summary of what's still open.</p></div>
+    </div>
+    <div class="chips"><span>Code violations</span><span>Rental registration fees</span><span>Inspection orders</span><span>Registration expiry</span><span>Housing-court paperwork notices</span><span>Monday summary</span></div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <p class="sub">Less than one fee notice. Every plan starts with a free week; cancel from your PayPal account any time.</p>
+    <div class="plans three">
+      <div class="plan">
+        <div class="name">Up to 3 properties</div>
+        <div class="price">$9<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Same-morning alerts</li><li>Registration expiry warnings</li><li>Monday summary</li><li>Email support</li></ul>
+        <div class="paybox" id="paypal-w3"></div>
+        <p class="fallback" id="fb-w3"></p>
+      </div>
+      <div class="plan best">
+        <span class="badge">Most landlords</span>
+        <div class="name">Up to 15 properties</div>
+        <div class="price">$29<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Everything in the small plan</li><li>15 addresses, change them any time</li><li>Priority email support</li></ul>
+        <div class="paybox" id="paypal-w15"></div>
+        <p class="fallback" id="fb-w15"></p>
+      </div>
+      <div class="plan">
+        <div class="name">Up to 60 properties</div>
+        <div class="price">$69<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>For property managers</li><li>60 addresses across your portfolio</li><li>Send your list as a spreadsheet</li></ul>
+        <div class="paybox" id="paypal-w60"></div>
+        <p class="fallback" id="fb-w60"></p>
+      </div>
+    </div>
+    <p class="quiet" style="margin-top:14px">More than 60 properties, or several companies? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20Watch%20portfolio">matt.fixnotice@yahoo.com</a>.</p>
+    <div class="ok" id="thanks"><strong>You're in.</strong> Check your email: we'll ask for your addresses, and your first status report arrives tomorrow morning. If nothing arrives by 8 AM, check spam or email matt.fixnotice@yahoo.com.</div>
+  </section>
+
+  <section class="faq">
+    <h2>Questions</h2>
+    <details><summary>Where does the information come from?</summary><p>The City of Buffalo's open-data portal: the code-violations feed and the rental registry, both public records updated by the Department of Permit and Inspection Services. We read them; we don't change them. Always confirm with the department before acting on a notice.</p></details>
+    <details><summary>Doesn't the city already notify me?</summary><p>By mail, to the address on the tax roll, sometimes weeks later. A 2024 Buffalo News investigation found nearly half of registered rentals delinquent on fees, many because the notices went to old addresses. We email you the morning after the record is filed.</p></details>
+    <details><summary>I manage properties for other owners. Does this work?</summary><p>Yes. Watch any address you're responsible for; the owner's name isn't required. The 60-property plan is built for managers, and larger portfolios are available by email.</p></details>
+    <details><summary>How do I add or remove a property?</summary><p>Reply to any FixNotice Watch email with the address. "Add 45 Elm St" or "remove 130 Alabama St" is enough. Changes are confirmed by email.</p></details>
+    <details><summary>How do I cancel?</summary><p>In your PayPal account under Subscriptions, any time, or reply STOP to any email.</p></details>
+  </section>
+
+  <div class="final">
+    <h2>Stop finding out from the fine.</h2>
+    <p>A free week of alerts on your Buffalo properties. Addresses in, city notices out, every morning.</p>
+    <a class="cta" href="#pricing">Start your free week</a>
+  </div>
+
+  <footer>
+    FixNotice · <a href="mailto:matt.fixnotice@yahoo.com">matt.fixnotice@yahoo.com</a> · <a href="index.html">FixNotice for contractors</a><br>
+    Not affiliated with the City of Buffalo. Information comes from public records and is provided as-is; confirm with the Department of Permit and Inspection Services before acting on it. Sample text on this page is illustrative.
+  </footer>
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA7rpxUlDfPux5L-cnPgDlsPHBSqnTQ02gaBEhRztMPVYTII0oWEIL6lqsz7EXDVf9jar7gt83XFtVc_M&vault=true&intent=subscription"></script>
+<script>
+  // Paste the PayPal plan IDs here once the three Watch plans exist (Pay & Get Paid > Subscriptions > Plans).
+  var WATCH_PLANS = { w3: 'PASTE_PLAN_ID_9', w15: 'PASTE_PLAN_ID_29', w60: 'PASTE_PLAN_ID_69' };
+
+  function sub(id, planId){
+    var fb = document.getElementById('fb-' + id);
+    if (!planId || planId.indexOf('PASTE') === 0 || !window.paypal) {
+      fb.innerHTML = 'Want the free week first? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20Watch%20free%20week">matt.fixnotice@yahoo.com</a> with your addresses.';
+      return;
+    }
+    paypal.Buttons({
+      style: { shape: 'pill', color: 'gold', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function(data, actions){ return actions.subscription.create({ plan_id: planId }); },
+      onApprove: function(data){
+        var t = document.getElementById('thanks'); t.style.display = 'block';
+        t.scrollIntoView({behavior:'smooth'});
+      }
+    }).render('#paypal-' + id);
+    fb.innerHTML = 'Want the free week first, no card? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20Watch%20free%20week">matt.fixnotice@yahoo.com</a> with your addresses.';
+  }
+  sub('w3', WATCH_PLANS.w3); sub('w15', WATCH_PLANS.w15); sub('w60', WATCH_PLANS.w60);
+
+  // ---- free lookup, straight from the city's open-data portal (public, read-only)
+  var V_URL = 'https://data.buffalony.gov/resource/ivrf-k9vm.json';
+  var R_URL = 'https://data.buffalony.gov/resource/hpqg-ihzt.json';
+  var DIRS = {NORTH:'N',SOUTH:'S',EAST:'E',WEST:'W',N:'N',S:'S',E:'E',W:'W'};
+  var SUFFIX = /^(ST|STREET|AVE|AVENUE|RD|ROAD|DR|DRIVE|PL|PLACE|CT|COURT|BLVD|BOULEVARD|PKWY|PARKWAY|LN|LANE|TER|TERRACE|WAY|CIR|CIRCLE|HWY|HIGHWAY)$/;
+  function keysFor(addr){
+    var parts = addr.toUpperCase().replace(/[^A-Z0-9 ]/g,' ').trim().split(/\s+/);
+    if (parts.length < 2 || !/^\d/.test(parts[0])) return [];
+    var num = parts[0].replace(/\D/g,''), w = parts.slice(1).filter(function(x){return !/^(BUFFALO|NY|APT|UNIT|LOWER|UPPER|REAR|FRONT)$/.test(x) && !/^\d{5}$/.test(x);});
+    if (!w.length) return [];
+    var out = [];
+    if (DIRS[w[0]] && w.length > 1 && !SUFFIX.test(w[1])) {
+      var full = {N:'NORTH',S:'SOUTH',E:'EAST',W:'WEST'}[DIRS[w[0]]];
+      out.push(num + ' ' + DIRS[w[0]] + ' ' + w[1]); out.push(num + ' ' + full + ' ' + w[1]);
+    } else { out.push(num + ' ' + w[0]); }
+    return out;
+  }
+  function esc(s){ return String(s||'').replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function clean(s){ var d = document.createElement('div'); d.innerHTML = String(s||''); var t = d.textContent || ''; d.innerHTML = t; return (d.textContent||'').replace(/\s+/g,' ').trim(); }
+  function soql(url, where, extra){ return fetch(url + '?$where=' + encodeURIComponent(where) + (extra||'')).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); }
+  function lookup(e){
+    e.preventDefault();
+    var out = document.getElementById('out'), addr = document.getElementById('addr').value;
+    var keys = keysFor(addr);
+    if (!keys.length) { out.innerHTML = '<p class="quiet">Please enter a street number and street name, like 130 Alabama St.</p>'; return false; }
+    out.innerHTML = '<p class="quiet">Checking the city\'s records…</p>';
+    var where = keys.map(function(k){ return "starts_with(upper(address),'" + k.replace(/'/g,"''") + " ')" + " OR upper(address)='" + k.replace(/'/g,"''") + "'"; }).join(' OR ');
+    Promise.all([
+      soql(V_URL, where, '&$order=date DESC&$limit=40'),
+      soql(R_URL, where, '&$limit=5')
+    ]).then(function(res){
+      var vs = res[0], regs = res[1], today = new Date();
+      var h = '<h3>' + esc(keys[0]) + '</h3>';
+      if (!regs.length) {
+        h += '<span class="pill gray">No rental registration on file</span><p class="quiet">If this is a rental you don\'t live in, the city requires one; unregistered rentals get cited.</p>';
+      } else {
+        var exp = regs.map(function(r){return (r.expdttm||'').slice(0,10);}).sort().pop();
+        var d = exp ? new Date(exp + 'T00:00:00') : null;
+        if (d && d < today) h += '<span class="pill bad">Registration EXPIRED ' + exp + '</span><p class="quiet">The city still lists it as active and will bill fees and fines.</p>';
+        else if (d && (d - today) < 60*86400000) h += '<span class="pill warn">Registration expires ' + exp + '</span>';
+        else h += '<span class="pill ok">Registered' + (exp ? ' through ' + exp : '') + '</span>';
+      }
+      var open = vs.filter(function(v){ return !/CLOSED|COMPLIED|RESOLVED|DISMISSED/i.test(v.status||''); });
+      h += '<p style="margin:12px 0 0"><b>' + open.length + ' open notice' + (open.length===1?'':'s') + '</b> <span class="quiet">(' + vs.length + ' on file since 2016, newest first)</span></p>';
+      if (vs.length) {
+        h += '<ul class="vlist">';
+        vs.slice(0, 12).forEach(function(v){
+          var isOpen = open.indexOf(v) >= 0;
+          h += '<li><b>' + esc((v.date||'').slice(0,10)) + '</b> <span class="pill ' + (isOpen?'warn':'gray') + '">' + (isOpen?'open':'closed') + '</span> ' +
+               esc(clean(v.description)) + (v.comments ? ' <span class="m">— ' + esc(clean(v.comments).slice(0,140)) + '</span>' : '') +
+               (v.case_number ? ' <span class="m">(' + esc(v.case_number) + ')</span>' : '') + '</li>';
+        });
+        h += '</ul>';
+        if (vs.length > 12) h += '<p class="quiet">…and ' + (vs.length - 12) + ' more.</p>';
+      }
+      h += '<p style="margin-top:14px"><a class="cta" href="#pricing">Watch this property from $9/month</a></p>';
+      out.innerHTML = h;
+    }).catch(function(err){
+      out.innerHTML = '<p class="quiet">The city\'s data portal didn\'t answer (' + esc(err.message) + '). Try again in a minute, or email us the address.</p>';
+    });
+    return false;
+  }
+</script>
+</body>
+</html>
