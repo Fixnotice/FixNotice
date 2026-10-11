@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FixNotice: Buffalo contractor leads from city inspections</title>
+<meta name="description" content="Every morning, the Buffalo properties that city inspectors just cited for problems in your trade, with owner contact info. Free week, then $79/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f7f9;--card:#ffffff;--ink:#0f172a;--muted:#5b6578;--line:#e3e7ee;
+    --navy:#0b1f3a;--navy2:#132d55;--accent:#2563eb;--accent-ink:#fff;--amber:#f59e0b;--green:#16a34a;
+    --chip:#eef2ff;--chip-ink:#3730a3;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}}
+  :root[data-theme="dark"]{--bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+  /* header + hero on navy */
+  .top{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,#1d4ed8 140%);color:#fff;position:relative;overflow:hidden}
+  .top:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 85% 10%,rgba(255,255,255,.10),transparent 60%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px)}
+  .top > .wrap{position:relative}
+  header{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.25)}
+  nav a{color:rgba(255,255,255,.8);text-decoration:none;margin-left:20px;font-weight:500}
+  nav a:hover{color:#fff}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px 0 56px}
+  .kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fcd34d;margin-bottom:14px}
+  h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;margin:0 0 16px;letter-spacing:-.025em;font-weight:800}
+  .lead{font-size:18px;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 26px}
+  .cta{display:inline-block;background:var(--amber);color:#1a1200;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(245,158,11,.35)}
+  .cta:hover{filter:brightness(1.05)}
+  .cta.alt{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);box-shadow:none;margin-left:10px}
+  .trust{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:22px;font-size:14px;color:rgba(255,255,255,.75)}
+  .trust span:before{content:"✓";color:#86efac;font-weight:800;margin-right:6px}
+
+  /* inbox mock */
+  .mock{background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;transform:rotate(-1.5deg)}
+  .mock .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--card) 92%,var(--line));font-size:12px;color:var(--muted)}
+  .mock .bar b{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e5e7eb}
+  .mock .bar b:nth-child(1){background:#fda4af}.mock .bar b:nth-child(2){background:#fde68a}.mock .bar b:nth-child(3){background:#86efac}
+  .mock .mail{padding:14px 16px 8px}
+  .mock .from{font-size:13px;color:var(--muted)}
+  .mock .subj{font-weight:700;margin:2px 0 10px}
+  .lead-row{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:8px 0;font-size:13px}
+  .lead-row .n{width:28px;height:28px;border-radius:8px;background:var(--chip);color:var(--chip-ink);display:grid;place-items:center;font-weight:700}
+  .lead-row .a{font-weight:600}
+  .lead-row .w{color:var(--muted)}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin:4px 4px 0 0;font-weight:600}
+  .tag.hot{background:#fff7ed;color:#c2410c}
+  .mock .foot{padding:8px 16px 14px;font-size:12px;color:var(--muted)}
+
+  /* stats strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:-28px 0 0;position:relative}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+  .stat b{display:block;font-size:28px;letter-spacing:-.02em;font-weight:800}
+  .stat span{color:var(--muted);font-size:13px}
+
+  section{padding:48px 0 0}
+  h2{font-size:30px;margin:0 0 8px;letter-spacing:-.02em;font-weight:800}
+  .sub{color:var(--muted);margin:0 0 22px;font-size:17px;max-width:680px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .step .num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+  .step h3{margin:0 0 6px;font-size:17px}
+  .step p{margin:0;color:var(--muted);font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:500}
+
+  .sample{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .sample table{width:100%;border-collapse:collapse;font-size:14px}
+  .sample th,.sample td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  .sample th{color:var(--muted);font-weight:600;font-size:13px;background:color-mix(in srgb,var(--card) 90%,var(--line))}
+  .sample tr:last-child td{border-bottom:0}
+  .sample .note{font-size:13px;color:var(--muted);padding:12px 14px;border-top:1px solid var(--line)}
+
+  .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative}
+  .plan.best{border-color:var(--accent);box-shadow:0 20px 50px rgba(37,99,235,.15)}
+  .badge{position:absolute;top:-12px;left:22px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .plan .name{font-weight:600;color:var(--muted)}
+  .price{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:6px 0 0}
+  .price small{font-size:15px;color:var(--muted);font-weight:500}
+  .plan .free{color:var(--green);font-weight:600;font-size:14px;margin-bottom:12px}
+  .plan ul{padding-left:0;list-style:none;margin:12px 0 18px;color:var(--ink)}
+  .plan li{margin:7px 0;padding-left:24px;position:relative;font-size:15px}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .paybox{min-height:48px}
+  .fallback{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .fallback a{color:var(--accent)}
+  .ok{display:none;background:color-mix(in srgb,var(--accent) 12%,var(--card));border:1px solid var(--accent);border-radius:12px;padding:16px;margin-top:16px}
+
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:8px 0}
+  .faq summary{cursor:pointer;font-weight:600}
+  .faq p{color:var(--muted);margin:10px 0 0}
+
+  .final{margin-top:56px;background:linear-gradient(160deg,var(--navy),#1d4ed8);color:#fff;border-radius:20px;padding:36px;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.8);margin:0 auto 20px;max-width:560px}
+  footer{margin:40px 0 28px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
+  footer a{color:var(--accent)}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-bottom:40px}
+    .mock{transform:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .steps,.plans{grid-template-columns:1fr}
+    nav{display:none}
+    .cta.alt{margin-left:0;margin-top:10px}
+  }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap">
+    <header>
+      <div class="logo"><i></i>FixNotice</div>
+      <nav><a href="#how">How it works</a><a href="#sample">Sample</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    </header>
+    <div class="hero">
+      <div>
+        <span class="kicker">Buffalo, NY · Updated every morning</span>
+        <h1>The homes the city just ordered fixed. In your inbox before your first coffee.</h1>
+        <p class="lead">Buffalo inspectors cite dozens of roofs, porches, pipes and wiring jobs every day, and the owner has to fix them. FixNotice turns those public records into a daily lead list for your trade, with the owner's mailing address.</p>
+        <a class="cta" href="#pricing">Start your free week</a>
+        <a class="cta alt" href="#sample">See a sample lead</a>
+        <div class="trust"><span>Public city records</span><span>Cancel anytime</span><span>No contract</span><span>Owner contact included</span></div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="bar"><b></b><b></b><b></b>&nbsp; Inbox · 7:02 AM</div>
+        <div class="mail">
+          <div class="from">FixNotice &lt;matt.fixnotice@yahoo.com&gt;</div>
+          <div class="subj">FixNotice leads for Tue Oct 7: Roofing (5 new)</div>
+          <div class="lead-row"><div class="n">1</div><div><div class="a">North Park, 14216 · 2-family</div><div class="w">Roof covering deteriorated; gutters and downspouts missing</div><span class="tag hot">rental</span><span class="tag">owner lives out of town</span></div></div>
+          <div class="lead-row"><div class="n">2</div><div><div class="a">Fillmore-Leroy, 14214 · 1-family</div><div class="w">Protective treatment: flashing and drip edge, water entry at eave</div><span class="tag">owner-occupied</span></div></div>
+          <div class="lead-row"><div class="n">3</div><div><div class="a">Riverside, 14207 · 3-family</div><div class="w">Chimney cap and roof penetrations, repair properly</div><span class="tag hot">rental</span></div></div>
+        </div>
+        <div class="foot">+ 2 more in the attached spreadsheet, with owner names and mailing addresses</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>1,062</b><span>trade leads in Buffalo, last 30 days</span></div>
+    <div class="stat"><b>76</b><span>roofing jobs cited last month</span></div>
+    <div class="stat"><b>1,054</b><span>building permits issued, $37.8M of work</span></div>
+    <div class="stat"><b>7 AM</b><span>in your inbox, every day</span></div>
+  </div>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="sub">The city does the inspecting. We do the sorting. You do the estimates.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>An inspector cites a property</h3><p>Buffalo publishes every code violation and building permit as public data, usually within a day or two of the visit.</p></div>
+      <div class="step"><div class="num">2</div><h3>We match it to your trade</h3><p>Each violation is read and sorted to the trade that fixes it, then paired with the owner's name and mailing address from state property records.</p></div>
+      <div class="step"><div class="num">3</div><h3>You get a ready-to-work list</h3><p>A spreadsheet by 7 AM: address, what the inspector wrote, rental or not, owner contact. Highest-value leads sorted to the top. Never the same lead twice.</p></div>
+    </div>
+    <div class="chips">
+      <span>Roofing &amp; gutters</span><span>Masonry, porches &amp; steps</span><span>Plumbing</span><span>Electrical</span><span>Heating &amp; HVAC</span><span>Windows &amp; doors</span><span>Painting &amp; siding</span><span>Pest control</span><span>Junk removal &amp; cleanouts</span><span>Interior repair</span><span>Fire safety</span><span>Building permits</span>
+    </div>
+  </section>
+
+  <section id="sample">
+    <h2>What a lead looks like</h2>
+    <p class="sub">Typical leads, based on real Buffalo inspection records. Street numbers and owner details appear only in your daily list.</p>
+    <div class="sample">
+      <table>
+        <thead><tr><th>Cited</th><th>Property</th><th>What the inspector wrote</th><th>Trade</th></tr></thead>
+        <tbody>
+          <tr><td>Sep 24</td><td>Sterling Ave, North Park, 14216<br><span class="tag">1-family</span></td><td>Window, skylight and door frames (Section 304, Exterior Structure)</td><td>Windows &amp; doors</td></tr>
+          <tr><td>Sep 23</td><td>Bennett Village, Fillmore-Leroy, 14214<br><span class="tag">1-family</span><span class="tag hot">owner lives elsewhere</span></td><td>Kitchen ceiling has water damage, must be repaired properly. Bathroom window trim chipping and peeling paint, missing plaster.</td><td>Interior repair, painting</td></tr>
+          <tr><td>Oct 7</td><td>Hartwell Rd, North Park, 14216</td><td><em>Permit:</em> full roof replacement and two flat porch areas, $40,000</td><td>Permits list (dumpsters, suppliers)</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Last 30 days in Buffalo: 76 roofing, 109 masonry/porch, 130 cleanout, 74 plumbing and 49 electrical leads, plus 1,054 permits worth $37.8M of planned work.</div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <p class="sub">One roof job pays for a year. Every plan starts with a free week; cancel from your PayPal account any time.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">One trade</div>
+        <div class="price">$79<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Daily leads for your trade</li><li>Owner name and mailing address</li><li>Spreadsheet by 7 AM, every day</li><li>Rentals and absentee owners flagged</li><li>Email support</li></ul>
+        <div class="paybox" id="paypal-one"></div>
+        <p class="fallback">Want the free week first, no card? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=Free%20week%20of%20FixNotice%20leads">matt.fixnotice@yahoo.com</a> with your trade.</p>
+      </div>
+      <div class="plan best">
+        <div class="badge">Most value</div>
+        <div class="name">All trades + permits</div>
+        <div class="price">$149<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Every trade's leads, every day</li><li>The daily building-permit list: where roofs, renovations and demos are starting (dumpsters, suppliers, insurance)</li><li>Owner name and mailing address</li><li>Rentals and absentee owners flagged</li><li>Priority email support</li></ul>
+        <div class="paybox" id="paypal-all"></div>
+        <p class="fallback">Questions first? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20all%20trades">matt.fixnotice@yahoo.com</a>.</p>
+      </div>
+    </div>
+    <div class="ok" id="thanks"><strong>You're in.</strong> Your first list arrives tomorrow morning. If you don't see it by 8 AM, check spam or email matt.fixnotice@yahoo.com.</div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Where does the data come from?</summary><p>The City of Buffalo's open-data portal (code violations, permits, rental registry) and New York State's property records (owner names and mailing addresses). All public. We do the daily sorting and matching so you don't have to.</p></details>
+      <details><summary>Can I contact the owners?</summary><p>Yes, within the normal rules. Mailing a letter is the simplest. Calls and texts have to follow the Do Not Call registry and the TCPA. Leads are provided as-is from public records.</p></details>
+      <details><summary>How fresh are the leads?</summary><p>Usually within 1 to 3 days of the inspection, and you never get the same lead twice.</p></details>
+      <details><summary>What if there are no leads for my trade one day?</summary><p>You'll get a short note instead of an empty list. Over a month, most trades see 50 to 130 leads.</p></details>
+      <details><summary>How do I cancel?</summary><p>In your PayPal account under Subscriptions, any time. Or email us and we'll do it the same day.</p></details>
+      <details><summary>Other cities?</summary><p>Buffalo first. Rochester, Syracuse and New York City are next; email us if you want one sooner.</p></details>
+    </div>
+  </section>
+
+  <div class="final">
+    <h2>Be the first contractor the owner hears from.</h2>
+    <p>Most owners who get a violation notice call whoever they can find. Be the one who already knows.</p>
+    <a class="cta" href="#pricing">Start your free week</a>
+  </div>
+
+  <footer>
+    FixNotice · <a href="mailto:matt.fixnotice@yahoo.com">matt.fixnotice@yahoo.com</a><br>
+    Not affiliated with the City of Buffalo. Leads come from public records and are provided as-is. Sample lead text on this page is illustrative.
+  </footer>
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA7rpxUlDfPux5L-cnPgDlsPHBSqnTQ02gaBEhRztMPVYTII0oWEIL6lqsz7EXDVf9jar7gt83XFtVc_M&vault=true&intent=subscription"></script>
+<script>
+  function sub(container, planId){
+    if (!window.paypal) return;
+    paypal.Buttons({
+      style: { shape: 'pill', color: 'gold', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function(data, actions){ return actions.subscription.create({ plan_id: planId }); },
+      onApprove: function(data){
+        var t = document.getElementById('thanks'); t.style.display = 'block';
+        t.scrollIntoView({behavior:'smooth'});
+      }
+    }).render(container);
+  }
+  sub('#paypal-one', 'P-52K6483186626780ANLFPLMQ');
+  sub('#paypal-all', 'P-9NK88265FC149254VNLFPQDI');
+</script>
+</body>
+</html>
