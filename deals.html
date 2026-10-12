@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FixNotice Deals: Buffalo distressed property leads for investors</title>
+<meta name="description" content="Every Buffalo property the city has cited, scored daily for seller motivation: vacant and unsafe-structure orders, housing court, out-of-town owners. Inspector notes, case numbers and owner mailing addresses. Free first week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f7f9;--card:#ffffff;--ink:#0f172a;--muted:#5b6578;--line:#e3e7ee;
+    --navy:#0b1f3a;--navy2:#132d55;--accent:#2563eb;--accent-ink:#fff;--amber:#f59e0b;--green:#16a34a;
+    --chip:#eef2ff;--chip-ink:#3730a3;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}}
+  :root[data-theme="dark"]{--bg:#0e1116;--card:#171b22;--ink:#eef2f7;--muted:#9aa5b5;--line:#272d38;--accent:#5b8cff;--accent-ink:#0b1220;--chip:#1e2740;--chip-ink:#aab8ff}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+  /* header + hero on navy */
+  .top{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,#1d4ed8 140%);color:#fff;position:relative;overflow:hidden}
+  .top:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 85% 10%,rgba(255,255,255,.10),transparent 60%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 48px)}
+  .top > .wrap{position:relative}
+  header{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.25)}
+  nav a{color:rgba(255,255,255,.8);text-decoration:none;margin-left:20px;font-weight:500}
+  nav a:hover{color:#fff}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px 0 56px}
+  .kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fcd34d;margin-bottom:14px}
+  h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;margin:0 0 16px;letter-spacing:-.025em;font-weight:800}
+  .lead{font-size:18px;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 26px}
+  .cta{display:inline-block;background:var(--amber);color:#1a1200;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(245,158,11,.35)}
+  .cta:hover{filter:brightness(1.05)}
+  .cta.alt{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);box-shadow:none;margin-left:10px}
+  .trust{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:22px;font-size:14px;color:rgba(255,255,255,.75)}
+  .trust span:before{content:"✓";color:#86efac;font-weight:800;margin-right:6px}
+
+  /* inbox mock */
+  .mock{background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;transform:rotate(-1.5deg)}
+  .mock .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--card) 92%,var(--line));font-size:12px;color:var(--muted)}
+  .mock .bar b{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e5e7eb}
+  .mock .bar b:nth-child(1){background:#fda4af}.mock .bar b:nth-child(2){background:#fde68a}.mock .bar b:nth-child(3){background:#86efac}
+  .mock .mail{padding:14px 16px 8px}
+  .mock .from{font-size:13px;color:var(--muted)}
+  .mock .subj{font-weight:700;margin:2px 0 10px}
+  .lead-row{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:8px 0;font-size:13px}
+  .lead-row .n{width:28px;height:28px;border-radius:8px;background:var(--chip);color:var(--chip-ink);display:grid;place-items:center;font-weight:700}
+  .lead-row .a{font-weight:600}
+  .lead-row .w{color:var(--muted)}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin:4px 4px 0 0;font-weight:600}
+  .tag.hot{background:#fff7ed;color:#c2410c}
+  .mock .foot{padding:8px 16px 14px;font-size:12px;color:var(--muted)}
+
+  /* stats strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:-28px 0 0;position:relative}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+  .stat b{display:block;font-size:28px;letter-spacing:-.02em;font-weight:800}
+  .stat span{color:var(--muted);font-size:13px}
+
+  section{padding:48px 0 0}
+  h2{font-size:30px;margin:0 0 8px;letter-spacing:-.02em;font-weight:800}
+  .sub{color:var(--muted);margin:0 0 22px;font-size:17px;max-width:680px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .step .num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+  .step h3{margin:0 0 6px;font-size:17px}
+  .step p{margin:0;color:var(--muted);font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:500}
+
+  .sample{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .sample table{width:100%;border-collapse:collapse;font-size:14px}
+  .sample th,.sample td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  .sample th{color:var(--muted);font-weight:600;font-size:13px;background:color-mix(in srgb,var(--card) 90%,var(--line))}
+  .sample tr:last-child td{border-bottom:0}
+  .sample .note{font-size:13px;color:var(--muted);padding:12px 14px;border-top:1px solid var(--line)}
+
+  .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative}
+  .plan.best{border-color:var(--accent);box-shadow:0 20px 50px rgba(37,99,235,.15)}
+  .badge{position:absolute;top:-12px;left:22px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .plan .name{font-weight:600;color:var(--muted)}
+  .price{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:6px 0 0}
+  .price small{font-size:15px;color:var(--muted);font-weight:500}
+  .plan .free{color:var(--green);font-weight:600;font-size:14px;margin-bottom:12px}
+  .plan ul{padding-left:0;list-style:none;margin:12px 0 18px;color:var(--ink)}
+  .plan li{margin:7px 0;padding-left:24px;position:relative;font-size:15px}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .paybox{min-height:48px}
+  .fallback{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .fallback a{color:var(--accent)}
+  .ok{display:none;background:color-mix(in srgb,var(--accent) 12%,var(--card));border:1px solid var(--accent);border-radius:12px;padding:16px;margin-top:16px}
+
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:8px 0}
+  .faq summary{cursor:pointer;font-weight:600}
+  .faq p{color:var(--muted);margin:10px 0 0}
+
+  .final{margin-top:56px;background:linear-gradient(160deg,var(--navy),#1d4ed8);color:#fff;border-radius:20px;padding:36px;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.8);margin:0 auto 20px;max-width:560px}
+  footer{margin:40px 0 28px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
+  footer a{color:var(--accent)}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-bottom:40px}
+    .mock{transform:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .steps,.plans{grid-template-columns:1fr}
+    nav{display:none}
+    .cta.alt{margin-left:0;margin-top:10px}
+  }
+</style>
+<style>
+  .score{display:inline-block;min-width:34px;text-align:center;font-weight:800;border-radius:8px;padding:3px 8px;background:#fff7ed;color:#c2410c}
+  .sig{font-size:12px;color:var(--muted)}
+  .how{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .how div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px}
+  .how b{display:block;margin-bottom:4px}
+  @media (max-width:860px){.how{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap">
+    <header>
+      <div class="logo"><i></i>FixNotice <span style="font-weight:500;opacity:.8">Deals</span></div>
+      <nav><a href="#sample">This week's sample</a><a href="#scoring">How it's scored</a><a href="#pricing">Pricing</a><a href="index.html">Contractors</a><a href="watch.html">Landlords</a></nav>
+    </header>
+    <div class="hero">
+      <div>
+        <span class="kicker">For Buffalo real estate investors &amp; wholesalers</span>
+        <h1>The owners the city is already pushing to sell.</h1>
+        <p class="lead">Every morning the City of Buffalo files code violations, vacant-structure orders and housing-court cases. FixNotice Deals reads the public records daily and scores every cited property for seller motivation, then hands you the list with the inspector's notes, case numbers and the owner's mailing address.</p>
+        <a class="cta" href="#sample">See this week's top 10</a>
+        <a class="cta alt" href="#pricing">Start your free week</a>
+        <div class="trust"><span>Fresh daily, not county data from months ago</span><span>Owner mailing address on every lead</span><span>Cancel any time</span></div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="bar"><b></b><b></b><b></b>&nbsp;deals.csv · Mon 7:01 AM</div>
+        <div class="mail">
+          <div class="from">FixNotice Deals &lt;matt.fixnotice@yahoo.com&gt;</div>
+          <div class="subj">FixNotice leads for Mon Oct 12: Distressed-Property Leads</div>
+          <div class="lead-row"><div class="n">14</div><div><div class="a">GLENWOOD AVE · 2-family</div><div class="w">VACANT/UNSECURED; UNSAFE STRUCTURE; housing court (1); owner out of state; 6 open notices</div><span class="tag hot">score 14</span><span class="tag">first cited 2026-02</span></div></div>
+          <div class="lead-row"><div class="n">11</div><div><div class="a">BAILEY AVE · store+apartments</div><div class="w">UNSAFE STRUCTURE; owner lives elsewhere; rental reg. lapsed; 5 open notices</div><span class="tag hot">score 11</span><span class="tag">owner mailing: Cheektowaga</span></div></div>
+          <div class="lead-row"><div class="n">9</div><div><div class="a">E DELAVAN AVE · 1-family</div><div class="w">VACANT/UNSECURED; owner out of state; 3 open notices</div><span class="tag hot">score 9</span><span class="tag">owner mailing: FL</span></div></div>
+        </div>
+        <div class="foot">Scores, signals and owner details on every row. House numbers in the real file.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>626</b><span>Buffalo properties cited last month</span></div>
+    <div class="stat"><b>77%</b><span>with an owner who lives elsewhere</span></div>
+    <div class="stat"><b>37</b><span>owners out of state, last month alone</span></div>
+    <div class="stat"><b>Daily</b><span>city records read every morning, as published</span></div>
+  </div>
+
+  <section id="sample">
+    <h2>This week's sample</h2>
+    <p class="sub">Street names only here. Subscribers get house numbers, every notice in the inspector's words, case numbers and the owner's mailing address.</p>
+    <div class="sample">
+      <table>
+        <thead><tr><th>Score</th><th>Street · neighborhood</th><th>Property</th><th>Why it's on the list</th></tr></thead>
+        <tbody id="sample-rows">
+          <tr><td><span class="score">14</span></td><td>Glenwood Ave · Masten Park</td><td>2-family</td><td class="sig">VACANT/UNSECURED; UNSAFE STRUCTURE; housing court; owner out of state; 6 open notices since Feb</td></tr>
+          <tr><td><span class="score">11</span></td><td>Bailey Ave · Kensington</td><td>store + apartments</td><td class="sig">UNSAFE STRUCTURE; owner lives elsewhere; rental registration lapsed; 5 open notices</td></tr>
+          <tr><td><span class="score">10</span></td><td>Fillmore Ave · Broadway-Fillmore</td><td>2-family</td><td class="sig">VACANT/UNSECURED; owner lives elsewhere; 4 open notices, oldest 7 months</td></tr>
+          <tr><td><span class="score">9</span></td><td>E Delavan Ave · Delavan-Grider</td><td>1-family</td><td class="sig">VACANT/UNSECURED; owner out of state; 3 open notices</td></tr>
+          <tr><td><span class="score">8</span></td><td>Alabama St · First Ward</td><td>2-family</td><td class="sig">owner lives elsewhere; rental registration lapsed; 9 open notices (roof, porch, chimney, windows)</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Illustrative rows from the real scoring model; the live list is rebuilt every morning from the city's feeds. Public records, provided as-is; verify by case number before acting.</div>
+    </div>
+  </section>
+
+  <section id="scoring">
+    <h2>How it's scored</h2>
+    <p class="sub">Every signal is a public record. The score is just the ones that matter most, added up.</p>
+    <div class="how">
+      <div><b>Vacant or unsecured (+4)</b>The city ordered the structure secured, boarded or declared it vacant. The strongest sell signal there is.</div>
+      <div><b>Unsafe structure (+4)</b>Unsafe, unfit for occupancy, order to vacate, demolition language. Repairs cost more than the owner wants to spend.</div>
+      <div><b>Open notices (+1 each, up to 6) and age (+1 to +2)</b>Notices that have sat open for 3 to 6+ months mean an owner who isn't fixing it.</div>
+      <div><b>Housing court (+3)</b>The city has taken the owner to court over the property.</div>
+      <div><b>Out-of-state owner (+3) or lives elsewhere (+2)</b>From the tax roll's mailing address. Absentee owners sell; out-of-state owners sell by mail.</div>
+      <div><b>Lapsed rental registration (+1), multi-family (+1)</b>A landlord who stopped registering is often done with the property.</div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <p class="sub">One deal pays for years of this. Free first week; cancel from your PayPal account any time.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">Weekly list</div>
+        <div class="price">$99<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Every Monday: properties new or changed in the last 7 days</li><li>Scores, signals, inspector notes, case numbers</li><li>Owner name and mailing address</li><li>Email support</li></ul>
+        <div class="paybox" id="paypal-dw"></div>
+        <p class="fallback" id="fb-dw"></p>
+      </div>
+      <div class="plan best">
+        <span class="badge">First to the door</span>
+        <div class="name">Daily list</div>
+        <div class="price">$129<small>/month</small></div>
+        <div class="free">First week free</div>
+        <ul><li>Every morning by 7 AM: the full scored list, new entries flagged</li><li>See a vacant-structure order the morning the city publishes it</li><li>Everything in the weekly plan</li><li>Priority email support</li></ul>
+        <div class="paybox" id="paypal-dd"></div>
+        <p class="fallback" id="fb-dd"></p>
+      </div>
+    </div>
+    <div class="ok" id="thanks"><strong>You're in.</strong> Your first list arrives tomorrow morning (Monday for the weekly plan). If nothing arrives by 8 AM, check spam or email matt.fixnotice@yahoo.com.</div>
+  </section>
+
+  <section class="faq">
+    <h2>Questions</h2>
+    <details><summary>How is this different from PropStream or a county list?</summary><p>Those are built from county records that update monthly and don't include city code enforcement at all. This list is rebuilt every morning from the City of Buffalo's own violation feed, so a vacant-structure order is on the list the morning the city publishes it (about two weeks after the inspection, and usually before the owner has acted), with the inspector's words.</p></details>
+    <details><summary>Can I contact the owners?</summary><p>The owner's mailing address comes from the public tax roll, so a letter is the simplest route. Calls and texts have to follow the Do Not Call list and TCPA; that's on you, as with any list.</p></details>
+    <details><summary>How many leads are there?</summary><p>Roughly 150 to 250 properties score high enough at any time, with a few dozen new or changed each week. Quality over volume: the score puts the vacant, unsafe, out-of-state-owner properties at the top.</p></details>
+    <details><summary>Do you cover other cities?</summary><p>Buffalo today. Rochester and Syracuse are next; email if you work those markets and want early access.</p></details>
+    <details><summary>How do I cancel?</summary><p>In your PayPal account under Subscriptions, any time, or reply STOP to any email.</p></details>
+  </section>
+
+  <div class="final">
+    <h2>Be the first letter in the mailbox.</h2>
+    <p>A free week of Buffalo's most motivated sellers, scored from the city's own records.</p>
+    <a class="cta" href="#pricing">Start your free week</a>
+  </div>
+
+  <footer>
+    FixNotice · <a href="mailto:matt.fixnotice@yahoo.com">matt.fixnotice@yahoo.com</a> · <a href="index.html">Contractors</a> · <a href="watch.html">Landlords</a><br>
+    Not affiliated with the City of Buffalo. Information comes from public records and is provided as-is; verify by case number before acting. Sample rows on this page are illustrative.
+  </footer>
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA7rpxUlDfPux5L-cnPgDlsPHBSqnTQ02gaBEhRztMPVYTII0oWEIL6lqsz7EXDVf9jar7gt83XFtVc_M&vault=true&intent=subscription"></script>
+<script>
+  // Paste the PayPal plan IDs here once the two Deals plans exist (Pay & Get Paid > Subscriptions > Plans).
+  var DEALS_PLANS = { dw: 'PASTE_PLAN_ID_99', dd: 'PASTE_PLAN_ID_129' };
+  function sub(id, planId){
+    var fb = document.getElementById('fb-' + id);
+    if (!planId || planId.indexOf('PASTE') === 0 || !window.paypal) {
+      fb.innerHTML = 'Want the free week first? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20Deals%20free%20week">matt.fixnotice@yahoo.com</a>.';
+      return;
+    }
+    paypal.Buttons({
+      style: { shape: 'pill', color: 'gold', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function(data, actions){ return actions.subscription.create({ plan_id: planId }); },
+      onApprove: function(data){ var t = document.getElementById('thanks'); t.style.display = 'block'; t.scrollIntoView({behavior:'smooth'}); }
+    }).render('#paypal-' + id);
+    fb.innerHTML = 'Want the free week first, no card? Email <a href="mailto:matt.fixnotice@yahoo.com?subject=FixNotice%20Deals%20free%20week">matt.fixnotice@yahoo.com</a>.';
+  }
+  sub('dw', DEALS_PLANS.dw); sub('dd', DEALS_PLANS.dd);
+</script>
+</body>
+</html>
